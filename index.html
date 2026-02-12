@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="/images/Logovector.svg">
+    <meta charset="UTF-8">
+    <title>AuviTech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            /** background: linear-gradient(135deg, #0a0f2c, #2a0a3d);*/
+            /** background: linear-gradient(135deg, #0b65fb, #020c2b);*/
+            background: linear-gradient(135deg, #0b9fff, #020c2b);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 20px;
+            text-align: center;
+
+            background: radial-gradient(
+                circle at center,
+                rgba(255,255,255,0.12) 0%,
+                rgba(255,255,255,0.06) 35%,
+                transparent 60%
+            );
+        }
+
+
+        .logo {
+            width: 300px;
+            margin-bottom: 0;
+            filter:
+                drop-shadow(0 0 25px rgba(0,0,0,0.9))
+                drop-shadow(0 0 10px rgba(255,255,255,0.08));
+            animation: fadeIn 1.5s ease forwards;
+            opacity: 0;
+        }
+
+        .brand-name {
+            width: 320px;
+            max-width: 90%;
+            filter:
+                drop-shadow(0 0 20px rgba(0,0,0,0.9))
+                drop-shadow(0 0 15px rgba(255,255,255,0.15));
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+        }
+        .slogan {
+            margin-top: 25px;
+            font-size: 18px;
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+        }
+        .navbar {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          /* background: rgba(20, 70, 255, 0.65); */
+          background: rgba(20, 90, 220, 0.65);
+          backdrop-filter: blur(10px);
+          transition: all 0.50s ease;
+          z-index: 1000;
+        }
+
+        .nav-container {
+          max-width: 1100px;
+          margin: auto;
+          padding: 18px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.35s ease;
+        }
+
+
+        .nav-logo img {
+          height: 55px;
+          transform: scale(1.5);
+          transform-origin: left center;
+          width: auto;
+          filter:
+            drop-shadow(0 0 10px rgba(255,255,255,0.35))
+            drop-shadow(0 0 3px rgba(0,0,0,0.6));
+        }
+
+        .nav-links a {
+          color: #cfd8ff;
+          text-decoration: none;
+          margin-left: 25px;
+          font-weight: 500;
+          transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+          color: white;
+        }
+        .navbar.scrolled {
+          background: rgba(5, 20, 70, 0.95);
+          box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+        }
+
+        .navbar.scrolled .nav-container {
+          padding: 10px 20px;
+        }
+
+        .navbar.scrolled .nav-logo img {
+          height: 45px;
+        }
+
+        .navbar.scrolled .nav-links a {
+          color: #fff;
+        }
+        .hamburger {
+          display: none;
+          width: 30px;
+          height: 22px;
+          cursor: pointer;
+          position: relative;
+        }
+
+        .hamburger span {
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background: white;
+          border-radius: 3px;
+          transition: 0.3s;
+        }
+
+        .hamburger span:nth-child(1) {
+          top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+          top: 9px;
+        }
+
+        .hamburger span:nth-child(3) {
+          top: 18px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg);
+          top: 9px;
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg);
+          top: 9px;
+        }
+
+        body {
+          padding-top: 80px;
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+
+            flex-shrink: 0;
+        }
+
+        h2 {
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #ddd;
+        }
+        li {
+            line-height: 1.6;
+            color: #ddd
+        }
+
+        /* CONTACTO */
+        .contact-box {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        main {
+          flex: 1;
+        }
+        a {
+            color: #ffffd0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.3);
+            margin-top: 50px;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+
+        @media (max-width: 600px) {
+          .nav-logo img {
+            height: 30px;
+          }
+        }
+        @media (max-width: 768px) {
+
+          .hamburger {
+            display: block;
+          }
+
+          .nav-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 260px;
+
+            background: rgba(5, 20, 70, 0.98);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            padding: 25px;
+            gap: 0;
+            transform: translateX(100%);
+            transition: 0.35s ease;
+
+          }
+
+          .nav-links a {
+            width: 100%;
+            font-size: 18px;
+            padding: 14px 0;
+          }
+
+          .nav-links.active {
+            transform: translateX(0);
+          }
+        }
+
+        /* ANIMACIÓN */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#inicio" class="nav-logo">
+      <img src="/images/LogoletrasvectorAI.svg" alt="Logo">
+    </a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#mision">Misión</a>
+      <a href="#vision">Visión</a>
+      <a href="#valores">Valores</a>
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+
+
+<body>
+<main>
+    <!-- HERO -->
+    <header class="hero" id="inicio">
+        <img src="/images/Logovector.svg" alt="Logo Empresa" class="logo">
+        <img src="/images/letras%20vector.svg" alt="AuviTech" class="brand-name">
+        <p class="slogan">IA que transforma tu rubro: Consultoría TI inteligente</p>
+    </header>
+
+    <section id="mision">
+        <h2>Misión</h2>
+        <p>
+          Ofrecemos soluciones modernas y eficientes basadas en inteligencia artificial y analítica avanzada, diseñadas
+          para optimizar procesos, fortalecer la seguridad y potenciar la toma de decisiones estratégicas de nuestros
+          clientes.
+        </p>
+    </section>
+
+    <section id="vision">
+        <h2>Visión</h2>
+        <p>
+          Convertirnos en referentes en el desarrollo de tecnologías inteligentes que impulsen la innovación, la
+          eficiencia y la sostenibilidad en sectores clave del país.
+        </p>
+    </section>
+
+    <section id="valores">
+        <h2>Valores</h2>
+        <ul>
+          <li>Innovación: buscamos constantemente nuevas formas de generar valor.</li>
+          <li>Transparencia: trabajamos con ética y claridad en cada proyecto.</li>
+          <li>Compromiso: acompañamos a nuestros clientes en cada etapa.</li>
+          <li>Calidad: garantizamos soluciones confiables y de alto impacto.</li>
+          <li>Sostenibilidad: promovemos el uso responsable de la tecnología.</li>
+        </ul>
+    </section>
+
+    <section id="quienes">
+        <h2>Quiénes Somos</h2>
+        <p>
+          Somos una empresa comprometida con la calidad y la innovación. Nuestro equipo está conformado por
+          especialistas en inteligencia artificial y analítica avanzada, con experiencia en visión computacional,
+          predicción de eventos y monitoreo inteligente de sensores. Aplicamos estas capacidades en sectores
+          estratégicos como minería, sistemas de potencia y medicina, desarrollando soluciones que transforman desafíos
+          en oportunidades y generan resultados tangibles para nuestros clientes.
+        </p>
+    </section>
+
+    <section id="equipo">
+        <h2>Equipo y Experiencia</h2>
+        <p>
+          Nuestro equipo está conformado por especialistas en inteligencia artificial y analítica avanzada, con sólida
+          experiencia en visión computacional, predicción de eventos y monitoreo inteligente de sensores. Aplicamos
+          estas capacidades en sectores estratégicos como minería, sistemas de potencia y medicina, ofreciendo
+          soluciones que optimizan procesos, mejoran la seguridad y potencian la toma de decisiones.
+
+        </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-box">
+            <p>Email: <a href="mailto:contacto@auvitech.cl?subject=Consulta&body=Hola, me gustaría información sobre...">contacto@auvitech.cl</a></p>
+            <!--<p>Teléfono: +56 9 1234 5678</p>-->
+            <p>Santiago, Chile</p>
+        </div>
+    </section>
+</main>
+    <!-- FOOTER -->
+    <footer>
+        © 2026 AuviTech SpA — Todos los derechos reservados
+    </footer>
+
+<script>
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
+
+window.addEventListener("scroll", function () {
+    const navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 60) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+    });
+});
+</script>
+
+</body>
+</html>
