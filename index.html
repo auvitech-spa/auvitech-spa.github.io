@@ -185,6 +185,7 @@
         p {
             line-height: 1.6;
             color: #ddd;
+            text-align: justify;
         }
         li {
             line-height: 1.6;
@@ -223,6 +224,15 @@
         @media (max-width: 600px) {
           .nav-logo img {
             height: 30px;
+          }
+        }
+        .break-mobile {
+          display: inline;
+        }
+        
+        @media (max-width: 768px) {
+          .break-mobile {
+            display: block;
           }
         }
         @media (max-width: 768px) {
@@ -305,7 +315,10 @@
     <header class="hero" id="inicio">
         <img src="/images/Logovector.svg" alt="Logo Empresa" class="logo">
         <img src="/images/letras%20vector.svg" alt="AuviTech" class="brand-name">
-        <p class="slogan">IA que transforma tu rubro: Consultoría TI inteligente</p>
+        <p class="slogan">
+            IA que transforma tu rubro:
+            <span class="break-mobile">Consultoría TI inteligente</span>
+        </p>
     </header>
 
     <section id="mision">
