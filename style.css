@@ -213,6 +213,21 @@ html {
   scroll-behavior: smooth;
 }
 
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a66c2;
+  border-radius: 6px;
+  padding: 8px;
+  transition: 0.3s;
+}
+
+.linkedin-link:hover {
+  background: #084b8a;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
   .nav-logo img {
     height: 30px;
